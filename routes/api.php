@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PagePostController;
+use App\Http\Controllers\PersonFollowController;
 use App\Http\Controllers\PostController;
 
 /*
@@ -26,4 +27,5 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('page/create', [PageController::class, 'store']);
     Route::post('page/{pageId}/attach-post', [PagePostController::class, 'store']);
     Route::post('person/attach-post', [PostController::class, 'store']);
+    Route::post('follow/person/{personId}', [PersonFollowController::class, 'store']);
 });
