@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('page_posts', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('post_content');
+            $table->unsignedBigInteger('page_id_fk');
+            $table->unsignedBigInteger('user_id_fk');
             $table->timestamps();
+
+            $table->foreign('page_id_fk')->references('id')->on('pages');
+            $table->foreign('user_id_fk')->references('id')->on('users');
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('page_posts');
     }
 };

@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PagePostController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,8 @@ use App\Http\Controllers\AuthController;
 Route::post('auth/login', [AuthController::class, 'signin']);
 Route::post('auth/register', [AuthController::class, 'signup']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group( function () {
+    Route::post('page/create', [PageController::class, 'store']);
+    Route::post('page/{pageId}/attach-post', [PagePostController::class, 'store']);
+    Route::post('person/attach-post', [PostController::class, 'store']);
 });
