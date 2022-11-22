@@ -5,6 +5,12 @@
 - Pull project from git provider. https://github.com/mahehasan/linkstaff-app.git
 - Open the console and cd your project root directory
 - Run `composer install` Or `composer update`
+- Add Database Details in ENV You have to add the database details into the .env configuration file to communicate between the laravel and mysql database. `DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_name
+DB_USERNAME=root
+DB_PASSWORD=`
 - Run `php artisan migrate`
 - Run `php artisan serve`
 #### Test Register REST API
